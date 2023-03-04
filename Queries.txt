@@ -1,0 +1,34 @@
+#Answering business queries
+
+1.What is most expensive brand
+2.Which is best brand 
+3.what are the brands are chemical free as well as budget friendly brands.
+4.what is the percentage of returning products.
+
+
+
+#Best brands in terms of price and rating
+
+select * from name
+where rating >4.2 and price<15
+
+
+#Most expensive brand
+
+select * from name
+where price = (select max(price) from name)
+
+
+#Top 10 Brands are chemical free as well as budget friendly brands
+
+select chem.id,chemicalfree,chem_id,name.price,name.name
+from chem 
+join name on 
+chem.id = name.id
+where chemicalfree= 'Y' and price < 15
+limit 10
+
+#Total number of returns
+
+select count(return) from rr
+where return = 'yes'

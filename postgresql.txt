@@ -1,0 +1,183 @@
+#Creating DataBase in PostgreSql
+Drop Database [if exists] New_project 
+Create Database New_Project;
+#Creating Tables:
+
+1.Creating Table Name:
+
+create table Name(
+id int generated always as identity,
+Name varchar(100) not null,
+Rating double precision  not null,
+Price int,
+Production_place varchar(100),
+PRIMARY KEY (id)
+)
+
+
+
+2.Creating  table Region:
+
+create table Region(
+id int generated always as identity,
+Issue_id int,
+Region varchar(100),
+primary key (Issue_id),
+constraint Fk_id foreign key (id)
+	references public.Name(id)
+	On update cascade)
+
+
+3.Creating table R/R(return/replace) :
+
+create table RR(
+id int,
+Issue_id int,
+Return varchar(50),
+	constraint fk_id foreign key (id)
+	references public.Name(id),
+	constraint fk_Issue_id foreign key (Issue_id)
+	references public.Region(Issue_id));
+
+4.Creating table CHEM
+
+Create table chem(
+chem_id int,
+id int,
+chemicalfree varchar(100),
+	primary key (chem_id),
+	constraint fk_id foreign key (id)
+	references public.Name (id))
+
+#inserting into Name table
+
+
+insert into name(Name,rating,price,production_place)
+Values
+('Mammypokopads',4,12,'france'),
+('Pampers',3.5,10,'India'),
+('Luvlup',4,13,'us'),
+('Apollo',4.5,17,'Germany'),
+('Huggies',4,18,'Italy'),
+('HM',4,11,'france'),
+('Himalaya',3,12,'India'),
+('Dyper',3,11,'India'),
+('Babyganics',5,18,'China'),
+('Cuties complete',5,19,'france'),
+('SeventhGeneration',4.2,16,'france'),
+('LuvsPro',4.5,12,'france'),
+('Buybuy',4.1,15,'france'),
+('Littleangel',3.9,11,'france'),
+('Supples',4,13,'India'),
+('Pampimo',4,16,'Italy'),
+('Bamboo Nature',4.2,13,'france'),
+('Mee Mee',4.2,12,'finland'),
+('Doobido',4.1,14,'france'),
+('Wowpower',4.2,13,'Germany'),
+('Luvs',4.3,12,'US'),
+('kukus',4,18,'Itlay'),
+('Newbrn',4.2,12,'france'),
+('J&J',3.2,12,'India'),
+('HNSM',3.8,12,'Italy'),
+('Indnn',4,12,'uk'),
+('RRR',4,12,'India')
+
+insert into region table
+
+insert into region(issue_id,region)
+values(7,'Europe'),
+(8,'Asia'),
+(9,'us'),
+(10,'Europe'),
+(11,'Europe'),
+(12,'Europe'),
+(13,'Asia'),
+(14,'Asia'),
+(15,'Asia'),
+(16,'Europe'),
+(17,'Europe'),
+(18,'Europe'),
+(19,'Europe'),
+(20,'Europe'),
+(21,'Asia'),
+(22,'Europe'),
+(23,'Europe'),
+(24,'Europe'),
+(25,'Europe'),
+(26,'Europe'),
+(27,'us'),
+(28,'Europe'),
+(29,'Europe'),
+(30,'Asia'),
+(31,'Europe'),
+(32,'Europe'),
+(33,'Asia')
+
+
+
+insert into rr(return)
+values
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes'),
+('yes')
+
+
+
+#populating the test table
+
+insert into test(test_id,testing_area)
+values
+(1,'mumbai'),
+(2,'mumbai'),
+(3,'mumbai'),
+(4,'banglore'),
+(5,'mumbai'),
+(6,'mumbai'),
+(7,'mumbai'),
+(8,'mumbai'),
+(9,'mumbai'),
+(10,'chennai'),
+(11,'mumbai'),
+(12,'chennai'),
+(13,'mumbai'),
+(14,'mumbai'),
+(15,'delhi'),
+(16,'mumbai'),
+(17,'mumbai'),
+(18,'mumbai'),
+(19,'mumbai'),
+(20,'mumbai'),
+(21,'mumbai'),
+(22,'delhi'),
+(23,'mumbai'),
+(24,'mumbai'),
+(25,'delhi'),
+(26,'mumbai'),
+(27,'chennai')
+
+Our database is ready now.
